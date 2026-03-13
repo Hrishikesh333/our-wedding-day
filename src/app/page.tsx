@@ -61,12 +61,13 @@ export default function Home() {
 
     const handleScroll = () => {
       // Reveal animations
-      const reveals = document.querySelectorAll('.animate-fade-in-up, .animate-fade-pop-up, .animate-slow-fade');
+      const reveals = document.querySelectorAll('.animate-fade-in-up');
       reveals.forEach(element => {
         const windowHeight = window.innerHeight;
-        const revealTop = element.getBoundingClientRect().top;
-        const revealPoint = 100;
-        if (revealTop < windowHeight - revealPoint) {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+
+        if (elementTop < windowHeight - elementVisible) {
           element.classList.add('visible');
         }
       });
@@ -150,7 +151,7 @@ export default function Home() {
                   style={{ width: '100%', height: 'auto', display: 'block' }}
                 />
               </div>
-              <div className="animate-fade-pop-up">
+              <div className="animate-fade-in-up fade-delay-2">
                 <h2 className="section-title" style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', marginBottom: '1.5rem' }}>Our Journey Begins</h2>
                 <p className="hero-text" style={{ fontSize: '1.2rem', lineHeight: '1.8', maxWidth: '600px', margin: '0 auto' }}>
                   Two hearts join together, two lives become one. We are blessed to have found each other

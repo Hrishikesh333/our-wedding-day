@@ -32,8 +32,8 @@ const Countdown: React.FC = () => {
     return () => clearInterval(timer);
   }, []);
 
-  const TimeUnit = ({ value, label, delayClass }: { value: number, label: string, delayClass: string }) => (
-    <div className={`countdown-unit-wrapper animate-fade-pop-up ${delayClass}`}>
+  const TimeUnit = ({ value, label }: { value: number, label: string }) => (
+    <div className="countdown-unit-wrapper">
       <div className="countdown-box">
         <span className="countdown-value">{value}</span>
       </div>
@@ -44,14 +44,14 @@ const Countdown: React.FC = () => {
   return (
     <section className="countdown-section">
       <div className="container">
-        <h2 className="countdown-title animate-fade-pop-up">Countdown</h2>
+        <h2 className="countdown-title">Countdown</h2>
         <div className="countdown-grid">
-          <TimeUnit value={timeLeft.days} label="DAYS" delayClass="fade-delay-1" />
-          <TimeUnit value={timeLeft.hours} label="HOURS" delayClass="fade-delay-2" />
-          <TimeUnit value={timeLeft.minutes} label="MIN" delayClass="fade-delay-3" />
-          <TimeUnit value={timeLeft.seconds} label="SEC" delayClass="fade-delay-4" />
+          <TimeUnit value={timeLeft.days} label="DAYS" />
+          <TimeUnit value={timeLeft.hours} label="HOURS" />
+          <TimeUnit value={timeLeft.minutes} label="MIN" />
+          <TimeUnit value={timeLeft.seconds} label="SEC" />
         </div>
-        <p className="countdown-footer-text animate-fade-pop-up fade-delay-4">until the big day</p>
+        <p className="countdown-footer-text">until the big day</p>
       </div>
     </section>
   );

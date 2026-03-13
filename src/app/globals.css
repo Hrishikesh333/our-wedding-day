@@ -204,64 +204,41 @@ h6 {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-@keyframes fadePopUp {
-  0% {
-    opacity: 0;
-    transform: translateY(40px) scale(0.85);
-  }
-  70% {
-    transform: translateY(-8px) scale(1.03);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
 .animate-fade-in-up {
-  opacity: 0;
-}
-
-.animate-fade-in-up.visible {
   animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-.animate-fade-pop-up {
   opacity: 0;
-}
-
-.animate-fade-pop-up.visible {
-  animation: fadePopUp 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 .animate-slow-fade {
+  animation: fadeInUp 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   opacity: 0;
 }
 
-.animate-slow-fade.visible {
-  animation: fadeInUp 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+.hero-fade-in {
+  opacity: 0;
+}
+
+.hero-fade-in.visible {
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .fade-delay-1 {
-  animation-delay: 0.1s;
-}
-
-.fade-delay-2 {
   animation-delay: 0.2s;
 }
 
-.fade-delay-3 {
-  animation-delay: 0.3s;
+.fade-delay-2 {
+  animation-delay: 0.4s;
 }
 
-.fade-delay-4 {
-  animation-delay: 0.4s;
+.fade-delay-3 {
+  animation-delay: 0.6s;
 }
 
 /* Navigation */
