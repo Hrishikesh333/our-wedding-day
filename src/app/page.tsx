@@ -5,6 +5,7 @@ import './globals.css';
 import ScratchCard from '@/components/ScratchCard';
 import PartyPopper from '@/components/PartyPopper';
 import Countdown from '@/components/Countdown';
+import Wishes from '@/components/Wishes';
 
 export default function Home() {
   const [videoFinished, setVideoFinished] = useState(false);
@@ -61,11 +62,11 @@ export default function Home() {
 
     const handleScroll = () => {
       // Reveal animations
-      const reveals = document.querySelectorAll('.animate-fade-in-up');
+      const reveals = document.querySelectorAll('.animate-fade-in-up, .animate-slow-fade');
       reveals.forEach(element => {
         const windowHeight = window.innerHeight;
         const elementTop = element.getBoundingClientRect().top;
-        const elementVisible = 150;
+        const elementVisible = 80;
 
         if (elementTop < windowHeight - elementVisible) {
           element.classList.add('visible');
@@ -124,7 +125,7 @@ export default function Home() {
               alignItems: 'center',
               lineHeight: '0.9'
             }}>
-              <span style={{ fontSize: '1.2em' }}>Yasar</span>
+              <span style={{ fontSize: '1.2em' }}>Adv. Yasar</span>
               <span style={{ fontSize: '0.55em', paddingLeft: '5rem' }}>Rahman</span>
             </h1>
             <p className={`hero-text hero-fade-in fade-delay-2 ${videoFinished ? 'visible' : ''}`}>
@@ -146,12 +147,12 @@ export default function Home() {
             <div style={{ maxWidth: '800px', margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '3rem' }}>
               <div className="animate-slow-fade" style={{ width: 'min(100%, 500px)', borderRadius: '1rem', overflow: 'hidden' }}>
                 <img
-                  src="/assets/couple-illustration.png"
-                  alt="Couple Illustration"
+                  src="/assets/couple-photo.png"
+                  alt="Couple Photo"
                   style={{ width: '100%', height: 'auto', display: 'block' }}
                 />
               </div>
-              <div className="animate-fade-in-up fade-delay-2">
+              <div className="animate-fade-in-up fade-delay-1">
                 <h2 className="section-title" style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', marginBottom: '1.5rem' }}>Our Journey Begins</h2>
                 <p className="hero-text" style={{ fontSize: '1.2rem', lineHeight: '1.8', maxWidth: '600px', margin: '0 auto' }}>
                   Two hearts join together, two lives become one. We are blessed to have found each other
@@ -164,10 +165,10 @@ export default function Home() {
         </section>
         
         <section className="reveal-wrapper">
-          <p className="reveal-instruction">Scratch all three circles to continue</p>
-          <h2 className="reveal-title">Reveal</h2>
-          <p className="reveal-subtitle">SCRATCH TO DISCOVER THE DATE</p>
-          <div className="reveal-grid">
+          <p className="reveal-instruction animate-fade-in-up">Scratch all three circles to continue</p>
+          <h2 className="reveal-title animate-fade-in-up fade-delay-1">Reveal</h2>
+          <p className="reveal-subtitle animate-fade-in-up fade-delay-2">SCRATCH TO DISCOVER THE DATE</p>
+          <div className="reveal-grid animate-fade-in-up fade-delay-3">
             <ScratchCard content="17" width={cardSize} height={cardSize} onComplete={() => handleCardComplete(1)} />
             <ScratchCard content="May" width={cardSize} height={cardSize} onComplete={() => handleCardComplete(2)} />
             <ScratchCard content="2026" width={cardSize} height={cardSize} onComplete={() => handleCardComplete(3)} />
@@ -175,6 +176,8 @@ export default function Home() {
         </section>
 
         <Countdown />
+
+        <Wishes />
 
         <footer className="footer" id="contact">
           <div className="container">

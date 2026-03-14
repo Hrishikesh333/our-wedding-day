@@ -44,14 +44,14 @@ const Countdown: React.FC = () => {
   return (
     <section className="countdown-section">
       <div className="container">
-        <h2 className="countdown-title">Countdown</h2>
-        <div className="countdown-grid">
+        <h2 className="countdown-title animate-fade-in-up">Countdown</h2>
+        <div className="countdown-grid animate-fade-in-up fade-delay-1">
           <TimeUnit value={timeLeft.days} label="DAYS" />
           <TimeUnit value={timeLeft.hours} label="HOURS" />
           <TimeUnit value={timeLeft.minutes} label="MIN" />
           <TimeUnit value={timeLeft.seconds} label="SEC" />
         </div>
-        <p className="countdown-footer-text">until the big day</p>
+        <p className="countdown-footer-text animate-fade-in-up fade-delay-2">until the big day</p>
       </div>
     </section>
   );
