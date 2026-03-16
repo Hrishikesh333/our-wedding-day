@@ -6,6 +6,7 @@ import ScratchCard from '@/components/ScratchCard';
 import PartyPopper from '@/components/PartyPopper';
 import Countdown from '@/components/Countdown';
 import Wishes from '@/components/Wishes';
+import Location from '@/components/Location';
 
 export default function Home() {
   const [videoFinished, setVideoFinished] = useState(false);
@@ -145,10 +146,10 @@ export default function Home() {
         <section id="about" className="section-padding invitation-bg">
           <div className="container">
             <div style={{ maxWidth: '800px', margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '3rem' }}>
-              <div className="animate-slow-fade" style={{ width: 'min(100%, 500px)', borderRadius: '1rem', overflow: 'hidden' }}>
+              <div className="animate-slow-fade" style={{ width: 'min(100%, 600px)' }}>
                 <img
-                  src="/assets/couple-photo.png"
-                  alt="Couple Photo"
+                  src="/assets/nahlarhmn.png"
+                  alt="Couple Illustration"
                   style={{ width: '100%', height: 'auto', display: 'block' }}
                 />
               </div>
@@ -176,6 +177,8 @@ export default function Home() {
         </section>
 
         <Countdown />
+
+        <Location />
 
         <Wishes />
 
