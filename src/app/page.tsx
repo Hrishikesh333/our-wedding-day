@@ -148,7 +148,7 @@ export default function Home() {
             <div style={{ maxWidth: '800px', margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '3rem' }}>
               <div className="animate-slow-fade" style={{ width: 'min(100%, 600px)' }}>
                 <img
-                  src="/assets/nahlarhmn.png"
+                  src="/assets/WhatsApp%20Image%202026-03-16%20at%2023.34.13.png"
                   alt="Couple Illustration"
                   style={{ width: '100%', height: 'auto', display: 'block' }}
                 />
