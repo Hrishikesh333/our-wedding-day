@@ -59,8 +59,6 @@ export default function AdminDashboard() {
     setPassword('');
   };
 
-  const latestGuestName = wishes.length > 0 ? wishes[0].guest_name : 'hyy'; // Default matched to image
-
   if (!isAuthenticated) {
     return (
       <div style={{ 
@@ -68,33 +66,117 @@ export default function AdminDashboard() {
         display: 'flex', 
         justifyContent: 'center', 
         alignItems: 'center', 
-        background: `url('/assets/wallpaper.png') repeat`,
-        backgroundSize: '400px',
-        padding: '2rem'
+        background: '#ffffff url("data:image/svg+xml,%3Csvg width=\'80\' height=\'80\' viewBox=\'0 0 80 80\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23c0704a\' fill-opacity=\'0.05\'%3E%3Cpath d=\'M40 40c0-10 10-20 20-20s20 10 20 20-10 20-20 20-20-10-20-20zM0 40C0 30 10 20 20 20s20 10 20 20-10 20-20 20S0 50 0 40zm40-40c0 10 10 20 20 20s20-10 20-20-10-20-20-20-20 10-20 20zM0 0c0 10 10 20 20 20s20-10 20-20-10-20-20-20S0-10 0 0z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")',
+        padding: '2rem',
+        position: 'relative'
       }}>
         <div style={{ 
           width: '100%',
           maxWidth: '430px',
-          background: '#fffcf8', 
-          padding: '4rem 3rem', 
-          borderRadius: '10px', 
-          boxShadow: '0 30px 60px rgba(0,0,0,0.1)', 
+          background: '#ffffff', 
+          padding: '3.5rem 2rem', 
+          borderRadius: '2.5rem', 
+          boxShadow: '0 10px 40px rgba(0,0,0,0.05)', 
           textAlign: 'center',
-          position: 'relative',
-          border: '1px solid #e8dbcc'
+          border: '1px solid #f0f0f0',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center'
         }}>
-          <img src="/assets/seal.png" alt="Seal" style={{ width: '80px', marginBottom: '2rem' }} />
-          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '3rem', color: '#5d2a18', marginBottom: '1rem' }}>Admin Access</h2>
-          <form onSubmit={verifyAdmin} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            <input 
-              type="password" 
-              placeholder="Password" 
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              style={{ padding: '1.2rem', borderRadius: '5px', border: '1px solid #e8dbcc', textAlign: 'center' }}
-            />
-            <button type="submit" style={{ padding: '1.2rem', background: '#5d2a18', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer', fontWeight: 700 }}>VERIFY</button>
+          <div style={{ 
+            width: '80px', 
+            height: '80px', 
+            background: 'linear-gradient(135deg, #fdfaf5, #fff)', 
+            borderRadius: '50%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '2.5rem',
+            margin: '0 auto 1.5rem',
+            boxShadow: '0 10px 20px rgba(93, 42, 24, 0.1)',
+            border: '1px solid rgba(93, 42, 24, 0.05)'
+          }}>🔒</div>
+          <h2 style={{ 
+            fontFamily: 'var(--font-display)', 
+            fontSize: '3rem', 
+            marginBottom: '0.5rem', 
+            color: '#5d2a18' 
+          }}>Admin Portal</h2>
+          <p style={{ 
+            fontFamily: 'var(--font-classic)', 
+            color: '#5d2a18', 
+            opacity: 0.6, 
+            marginBottom: '3rem',
+            fontSize: '0.8rem',
+            letterSpacing: '0.15em',
+            textTransform: 'uppercase',
+            fontWeight: 700
+          }}>Exclusive Management Access</p>
+          
+          <form onSubmit={verifyAdmin} style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            <div style={{ position: 'relative', width: '100%' }}>
+              <input 
+                type="password" 
+                placeholder="Enter Secure Password" 
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                style={{ 
+                  padding: '1.2rem 1rem', 
+                  width: '100%', 
+                  borderRadius: '1.2rem', 
+                  border: '1.5px solid rgba(93, 42, 24, 0.08)', 
+                  fontSize: '1rem',
+                  outline: 'none',
+                  transition: 'all 0.3s',
+                  background: 'rgba(255, 255, 255, 0.8)',
+                  color: '#3a1a0a',
+                  textAlign: 'center',
+                  boxSizing: 'border-box'
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = '#c0704a';
+                  e.target.style.boxShadow = '0 0 0 4px rgba(192, 112, 74, 0.1)';
+                  e.target.style.background = '#fff';
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = 'rgba(93, 42, 24, 0.08)';
+                  e.target.style.boxShadow = 'none';
+                  e.target.style.background = 'rgba(255, 255, 255, 0.8)';
+                }}
+              />
+            </div>
+            <button 
+              type="submit" 
+              style={{ 
+                padding: '1.2rem 1.5rem', 
+                width: '100%',
+                background: 'linear-gradient(135deg, #c0704a, #5d2a18)', 
+                color: '#fff', 
+                border: 'none', 
+                borderRadius: '1.2rem', 
+                cursor: 'pointer',
+                fontSize: '1.1rem',
+                fontWeight: 700,
+                boxShadow: '0 12px 25px rgba(93, 42, 24, 0.25)',
+                transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+                boxSizing: 'border-box'
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.transform = 'scale(1.02)';
+                e.currentTarget.style.boxShadow = '0 15px 30px rgba(93, 42, 24, 0.35)';
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.transform = 'scale(1)';
+                e.currentTarget.style.boxShadow = '0 12px 25px rgba(93, 42, 24, 0.25)';
+              }}
+            >
+              Sign In to Dashboard
+            </button>
           </form>
+          
+          <div style={{ marginTop: '2.5rem', opacity: 0.3, fontSize: '0.75rem', letterSpacing: '0.1em' }}>
+            © 2026 THE DIGITAL YES • SECURED ACCESS
+          </div>
         </div>
       </div>
     );
@@ -103,188 +185,244 @@ export default function AdminDashboard() {
   return (
     <div style={{ 
       minHeight: '100vh', 
-      background: `url('/assets/wallpaper.png') repeat`,
-      backgroundSize: '400px',
+      background: '#ffffff',
       paddingBottom: '5rem',
-      fontFamily: 'serif',
-      color: '#333'
+      fontFamily: 'var(--font-classic)'
     }}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Italianno&family=Great+Vibes&family=Playfair+Display:ital@0;1&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,700;1,400&display=swap');
-        
-        .torn-paper {
-          background: #fffcf8;
-          box-shadow: 0 12px 24px rgba(0,0,0,0.06);
-          position: relative;
-          padding: 2.5rem;
-          clip-path: polygon(
-            0% 2%, 3% 0%, 7% 1%, 12% 0%, 18% 2%, 25% 1%, 32% 0%, 38% 1%, 45% 0%, 52% 2%, 60% 1%, 68% 0%, 75% 1%, 82% 0%, 90% 2%, 96% 1%, 100% 0%, 100% 98%, 97% 100%, 92% 99%, 85% 100%, 78% 98%, 70% 100%, 62% 99%, 55% 100%, 48% 98%, 40% 100%, 32% 99%, 25% 100%, 18% 98%, 10% 100%, 4% 99%, 0% 100%
-          );
-        }
-
-        .verified-pouch {
-          background: url("data:image/svg+xml,%3Csvg width='180' height='45' viewBox='0 0 180 45' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 0 L170 0 L180 22 L170 45 L10 45 L0 22 Z' fill='%235d2a18'/%3E%3Cpath d='M5 22 L175 22' stroke='%23c0704a' stroke-dasharray='4'/%3E%3C/svg%3E") no-repeat center;
-          background-size: 100% 100%;
-          padding: 8px 25px;
-          display: flex;
-          align-items: center;
-          color: #fff;
-          font-family: var(--font-classic);
-          font-size: 0.75rem;
-          font-weight: 700;
-          text-transform: uppercase;
-          gap: 10px;
-        }
-
-        .discard-mahogany {
-          background: url("data:image/svg+xml,%3Csvg width='160' height='50' viewBox='0 0 160 50' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 0 L145 0 Q160 0 160 25 Q160 50 145 50 L15 50 Q0 50 0 25 Q0 0 15 0 Z' fill='%235d2a18'/%3E%3Cellipse cx='5' cy='25' rx='3' ry='8' fill='%23c0704a'/%3E%3Cellipse cx='155' cy='25' rx='3' ry='8' fill='%23c0704a'/%3E%3C/svg%3E") no-repeat center;
-          background-size: contain;
-          color: #fff;
-          border: none;
-          padding: 10px 35px;
-          font-family: var(--font-classic);
-          font-size: 0.9rem;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          transition: transform 0.2s;
-        }
-
-        .discard-mahogany:hover {
-          transform: scale(1.05);
-        }
-
-        .secure-logout-fancy {
-          background: url("data:image/svg+xml,%3Csvg width='180' height='60' viewBox='0 0 180 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 5 L170 5 Q180 5 180 30 Q180 55 170 55 L10 55 Q0 55 0 30 Q0 5 10 5 Z' fill='%235d2a18'/%3E%3Cpath d='M20 15 L160 15' stroke='%23c0704a' stroke-width='0.5'/%3E%3Cpath d='M20 45 L160 45' stroke='%23c0704a' stroke-width='0.5'/%3E%3C/svg%3E") no-repeat center;
-          background-size: contain;
-          color: #eee9e0;
-          border: none;
-          padding: 1rem 2.5rem;
-          font-family: var(--font-classic);
-          font-weight: 700;
-          font-size: 0.85rem;
-          cursor: pointer;
-        }
+        /* Removed animations for plain white version */
       `}</style>
-
-      {/* Hero Bar */}
-      <div style={{ 
-        background: '#fdfaf5', 
-        borderBottom: '2px solid #e8dbcc', 
-        padding: '1rem 0',
+      {/* Top Header */}
+      <header style={{ 
+        padding: '1.2rem 4rem', 
+        background: 'rgba(255, 255, 255, 0.7)', 
+        backdropFilter: 'blur(10px)',
+        position: 'sticky',
+        top: 0,
+        zIndex: 100,
         display: 'flex',
-        justifyContent: 'center'
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        borderBottom: '1.5px solid rgba(93, 42, 24, 0.08)'
       }}>
-        <div style={{ maxWidth: '1400px', width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 2rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-            <img src="/assets/seal.png" alt="Seal" style={{ width: '60px' }} />
-            <div>
-              <h1 style={{ fontFamily: 'Great Vibes, cursive', fontSize: '2.8rem', color: '#5d2a18', margin: 0, lineHeight: 1 }}>Amina & Yasar</h1>
-              <p style={{ fontFamily: 'var(--font-classic)', fontSize: '0.75rem', color: '#c0704a', margin: 0, letterSpacing: '0.15em', textTransform: 'uppercase', fontWeight: 600 }}>GUEST WISHES PORTAL</p>
-            </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <div style={{ 
+            width: '45px', 
+            height: '45px', 
+            background: 'linear-gradient(135deg, #c0704a, #5d2a18)', 
+            borderRadius: '12px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: '#fff',
+            fontSize: '1.2rem',
+            boxShadow: '0 4px 10px rgba(93, 42, 24, 0.2)'
+          }}>💌</div>
+          <div>
+            <h1 style={{ 
+              fontFamily: 'var(--font-display)', 
+              fontSize: '2rem', 
+              color: '#5d2a18', 
+              margin: 0,
+              lineHeight: 1
+            }}>Amina & Yasar</h1>
+            <p style={{ margin: 0, fontSize: '0.7rem', color: '#c0704a', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 700 }}>Guest Wishes Portal</p>
           </div>
-          <button onClick={logout} className="secure-logout-fancy">
-            Secure Logout
-          </button>
         </div>
-      </div>
+        
+        <button 
+          onClick={logout}
+          style={{ 
+            padding: '0.7rem 1.4rem', 
+            background: 'transparent', 
+            color: '#5d2a18', 
+            border: '1.5px solid rgba(93, 42, 24, 0.2)', 
+            borderRadius: '0.8rem', 
+            cursor: 'pointer',
+            fontSize: '0.9rem',
+            fontWeight: 600,
+            transition: 'all 0.2s'
+          }}
+          onMouseOver={(e) => { e.currentTarget.style.background = '#5d2a18'; e.currentTarget.style.color = '#fff'; }}
+          onMouseOut={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#5d2a18'; }}
+        >
+          Secure Logout
+        </button>
+      </header>
 
-      <main style={{ maxWidth: '1400px', margin: '4rem auto', padding: '0 2rem' }}>
+      <main style={{ maxWidth: '1200px', margin: '3rem auto', padding: '0 2rem' }}>
         {/* Stats Row */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', marginBottom: '4rem' }}>
-          <div className="torn-paper" style={{ display: 'flex', alignItems: 'center', gap: '3rem' }}>
-            <img src="/assets/jar.png" alt="Jar" style={{ width: '100px' }} />
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', 
+          gap: '2rem',
+          marginBottom: '4rem'
+        }}>
+          <div style={{ 
+            background: '#fff', 
+            padding: '2rem', 
+            borderRadius: '1.5rem', 
+            boxShadow: '0 10px 30px rgba(0,0,0,0.03)',
+            border: '1px solid rgba(93, 42, 24, 0.05)',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '1.5rem'
+          }}>
+            <div style={{ fontSize: '2.5rem' }}>📊</div>
             <div>
-              <p style={{ fontFamily: 'var(--font-classic)', fontSize: '0.85rem', color: '#666', letterSpacing: '0.1em' }}>TOTAL WISHES</p>
-              <h3 style={{ fontSize: '4.5rem', margin: 0, color: '#333', fontWeight: 400 }}>{wishes.length}</h3>
+              <p style={{ margin: 0, color: '#666', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Total Wishes</p>
+              <h3 style={{ margin: 0, fontSize: '1.8rem', color: '#5d2a18', fontFamily: 'var(--font-classic)' }}>{wishes.length}</h3>
             </div>
           </div>
-          
-          <div className="torn-paper" style={{ display: 'flex', alignItems: 'center', gap: '3rem' }}>
-            <img src="/assets/brooch.png" alt="Brooch" style={{ width: '90px' }} />
+
+          <div style={{ 
+            background: '#fff', 
+            padding: '2rem', 
+            borderRadius: '1.5rem', 
+            boxShadow: '0 10px 30px rgba(0,0,0,0.03)',
+            border: '1px solid rgba(93, 42, 24, 0.05)',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '1.5rem'
+          }}>
+            <div style={{ fontSize: '2.5rem' }}>✨</div>
             <div>
-              <p style={{ fontFamily: 'var(--font-classic)', fontSize: '0.85rem', color: '#666', letterSpacing: '0.1em' }}>NEWEST GUEST</p>
-              <h3 style={{ fontSize: '2.8rem', margin: 0, color: '#5d2a18', fontFamily: 'Great Vibes, cursive' }}>{latestGuestName}</h3>
+              <p style={{ margin: 0, color: '#666', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Newest Guest</p>
+              <h3 style={{ margin: 0, fontSize: '1.2rem', color: '#5d2a18', fontFamily: 'var(--font-classic)' }}>{wishes[0]?.guest_name || 'No Activity'}</h3>
             </div>
           </div>
         </div>
 
         {/* Wishes Grid */}
-        <div style={{ position: 'relative' }}>
-          {/* Petals */}
-          <img src="/assets/petals.png" style={{ position: 'absolute', top: '-100px', right: '10%', width: '350px', opacity: 0.8, pointerEvents: 'none' }} />
-          <img src="/assets/petals.png" style={{ position: 'absolute', bottom: '-50px', left: '-50px', width: '250px', transform: 'rotate(-40deg)', opacity: 0.6, pointerEvents: 'none' }} />
-
-          <div style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fill, minmax(600px, 1fr))', 
-            gap: '4rem',
-            position: 'relative',
-            zIndex: 1
-          }}>
-            {wishes.map((wish) => (
-              <div key={wish.id} style={{ 
-                background: '#fffcf8', 
-                border: '1px solid #e8dbcc', 
-                padding: '4rem 3rem', 
-                boxShadow: '0 20px 60px rgba(0,0,0,0.06)',
-                borderRadius: '8px',
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', 
+          gap: '2.5rem' 
+        }}>
+          {wishes.map((wish) => (
+            <div 
+              key={wish.id} 
+              style={{ 
+                background: '#fff', 
+                padding: '2.5rem', 
+                borderRadius: '2rem', 
+                boxShadow: '0 15px 40px rgba(93, 42, 24, 0.05)', 
+                border: '1px solid rgba(93, 42, 24, 0.06)',
+                display: 'flex',
+                flexDirection: 'column',
+                transition: 'all 0.3s',
+                opacity: isDeleting === wish.id ? 0.5 : 1
+              }}
+              onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-5px)'}
+              onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+            >
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
+                <span style={{ 
+                  background: 'rgba(192, 112, 74, 0.1)', 
+                  color: '#c0704a', 
+                  padding: '0.4rem 1rem', 
+                  borderRadius: '2rem', 
+                  fontSize: '0.75rem', 
+                  fontWeight: 700 
+                }}>Verified Guest</span>
+                <span style={{ fontSize: '1.5rem' }}>✉️</span>
+              </div>
+              
+              <h3 style={{ 
+                fontFamily: 'var(--font-classic)', 
+                margin: '0 0 0.5rem 0', 
+                color: '#3a1a0a', 
+                fontSize: '1.4rem', 
+                fontWeight: 600 
+              }}>{wish.guest_name}</h3>
+              
+              <div style={{ 
+                flexGrow: 1, 
+                padding: '1.5rem 0', 
                 position: 'relative'
               }}>
-                {/* Lace ornament */}
-                <div style={{ 
+                <span style={{ 
                   position: 'absolute', 
-                  top: '90px', 
-                  left: '40px', 
-                  width: '180px', 
-                  height: '20px', 
-                  background: 'url("data:image/svg+xml,%3Csvg width='40' height='20' viewBox='0 0 40 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 20 Q10 0 20 20 Q30 0 40 20' stroke='%23e8dbcc' fill='none' stroke-width='1.5'/%3E%3C/svg%3E")' 
-                }} />
-
-                {/* Verified Badge */}
-                <div style={{ position: 'absolute', top: '40px', left: '40px' }}>
-                  <div className="verified-pouch">
-                    Verified Guest <img src="/assets/seal.png" style={{ width: '20px', filter: 'brightness(2)' }} alt="" />
-                  </div>
-                </div>
-
-                <div style={{ position: 'absolute', top: '45px', right: '45px', opacity: 0.4, fontSize: '2rem' }}>✉️</div>
-
-                <div style={{ marginTop: '5rem' }}>
-                  <h4 style={{ fontFamily: 'Great Vibes, cursive', fontSize: '4.5rem', color: '#5d2a18', margin: '0 0 0.5rem 0' }}>{wish.guest_name}</h4>
-                  <p style={{ 
-                    fontSize: '1.6rem', 
-                    lineHeight: '1.6', 
-                    color: '#333', 
-                    fontStyle: 'italic', 
-                    marginBottom: '3rem',
-                    fontFamily: 'Cormorant Garamond, serif'
-                  }}>
-                    {wish.message}
-                  </p>
-                </div>
-
-                {/* Dotted Line */}
-                <div style={{ borderBottom: '2px dotted #e8dbcc', marginBottom: '2.5rem' }} />
-
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <div style={{ color: '#8b5a2b', fontSize: '1rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    📅 <span style={{ fontWeight: 600 }}>{new Date(wish.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
-                  </div>
-                  
-                  <button onClick={() => deleteWish(wish.id)} className="discard-mahogany">
-                    Discard 🗑️
-                  </button>
-                </div>
+                  top: '-1rem', 
+                  left: '-0.5rem', 
+                  fontSize: '3rem', 
+                  opacity: 0.1, 
+                  color: '#5d2a18',
+                  userSelect: 'none'
+                }}>"</span>
+                <p style={{ 
+                  fontFamily: 'var(--font-body)', 
+                  margin: 0, 
+                  color: '#3a1a0a', 
+                  opacity: 0.85, 
+                  lineHeight: 1.8,
+                  fontSize: '1.1rem',
+                  fontStyle: 'italic'
+                }}>{wish.message}</p>
               </div>
-            ))}
-          </div>
+
+              <div style={{ 
+                marginTop: '1.5rem', 
+                paddingTop: '1.5rem', 
+                borderTop: '1px dashed rgba(93, 42, 24, 0.1)',
+                display: 'flex', 
+                justifyContent: 'space-between', 
+                alignItems: 'center' 
+              }}>
+                <div style={{ color: '#999', fontSize: '0.8rem' }}>
+                  <span style={{ marginRight: '0.5rem' }}>📅</span>
+                  {new Date(wish.created_at).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' })}
+                </div>
+                
+                <button 
+                  onClick={() => deleteWish(wish.id)}
+                  disabled={isDeleting === wish.id}
+                  style={{ 
+                    padding: '0.6rem 1rem', 
+                    background: 'rgba(255, 77, 77, 0.05)', 
+                    color: '#ff4d4d', 
+                    border: 'none', 
+                    borderRadius: '0.8rem', 
+                    cursor: 'pointer',
+                    fontSize: '0.8rem',
+                    fontWeight: 600,
+                    transition: 'all 0.2s',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.4rem'
+                  }}
+                  onMouseOver={(e) => { e.currentTarget.style.background = '#ff4d4d'; e.currentTarget.style.color = '#fff'; }}
+                  onMouseOut={(e) => { e.currentTarget.style.background = 'rgba(255, 77, 77, 0.05)'; e.currentTarget.style.color = '#ff4d4d'; }}
+                >
+                  {isDeleting === wish.id ? 'Deleting...' : (
+                    <>
+                      <span>🗑️</span>
+                      <span>Discard</span>
+                    </>
+                  )}
+                </button>
+              </div>
+            </div>
+          ))}
+          {wishes.length === 0 && (
+            <div style={{ 
+              gridColumn: '1 / -1', 
+              textAlign: 'center', 
+              padding: '6rem 0',
+              background: '#fff',
+              borderRadius: '2rem',
+              border: '1px dashed rgba(93, 42, 24, 0.2)'
+            }}>
+              <div style={{ fontSize: '4rem', marginBottom: '1.5rem' }}>📭</div>
+              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '2.5rem', color: '#5d2a18' }}>Waiting for wishes...</h3>
+              <p style={{ color: '#666' }}>As guests start sending messages, they will appear here beautifully.</p>
+            </div>
+          )}
         </div>
       </main>
 
-      <footer style={{ textAlign: 'center', padding: '5rem', opacity: 0.2 }}>
-        <p style={{ letterSpacing: '0.4em', fontSize: '0.8rem' }}>THE DIGITAL YES LUXURY SUITE</p>
+      <footer style={{ textAlign: 'center', padding: '2rem', opacity: 0.4 }}>
+        <p style={{ fontSize: '0.8rem', letterSpacing: '0.1em' }}>POWERED BY THE DIGITAL YES ADMIN TOOL</p>
       </footer>
     </div>
   );
