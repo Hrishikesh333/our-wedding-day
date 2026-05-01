@@ -1,5 +1,5 @@
 @import url('https://fonts.cdnfonts.com/css/milavora');
-@import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 
 :root {
   --background: 40 39% 91%;
@@ -30,9 +30,9 @@
   --sage-light: 60 12% 69%;
   --gold: 42 85% 55%;
 
-  --font-display: "Parisienne", cursive;
-  --font-script: "Parisienne", cursive;
-  --font-body: "Parisienne", cursive;
+  --font-display: "Great Vibes", cursive;
+  --font-script: "Great Vibes", cursive;
+  --font-body: "Great Vibes", cursive;
   --font-classic: 'Inter', system-ui, -apple-system, sans-serif;
 }
 

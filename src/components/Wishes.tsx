@@ -34,8 +34,8 @@ const Wishes: React.FC = () => {
         setSubmitted(false);
       }, 2500);
     } else {
-      console.error(error);
-      alert("Failed to send your wish. Please try again later!");
+      console.error("Supabase Error:", error.message, error.details);
+      alert(`Failed to send your wish: ${error.message || 'Please try again later!'}`);
     }
   };
 
